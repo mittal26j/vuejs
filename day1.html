@@ -15,14 +15,17 @@
             </div>           
             <div class="row">
                 <div class="col-md-12">
-                    stock - {{stock > 0 ? "In stock" : "Out of stock"}}
+                    stock [{{stock}}] <br>
+                    ternary condition(In stock/Out of stock) - {{stock > 0 ? "In stock" : "Out of stock"}}
                     <br>
-                    stock1 - {{stock1 = null ? "null" : "not null"}}
-                    <br>
-                    Object <br>
+                    stock1 <br>
+                    ternary condition(null/not null) - {{stock1 == null ? "null" : "not null"}}
+                    <br> <br>
+                    student object <br>
                     ID = {{student.id}} <br>
                     Name = {{student.name}} <br>
                     email = {{student.email}} <br>
+                    <input type="text" :value="student.city">
                 </div>
             </div>           
          </div>   
@@ -32,12 +35,13 @@
             el: '#app',
             data: {
                message: 'test message',
-               stock:0,
+               stock:5,
                stock1:null,
                student :{
                    "id":1,
                    "name":"test test",
-                   "email":"test@mailinator.com"
+                   "email":"test@mailinator.com",
+                   "city" :'Ahmedabad'
                }
             }
          });
