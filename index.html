@@ -12,14 +12,21 @@
                <div class="col-md-2">
                   <div class="card">
                      <div class="card-body">
-                       <a href="day1.html">Day 1</a>
+                        <a :href="goToPage('day1')">Day 1</a>
                      </div>
                    </div>
                </div>
                <div class="col-md-2">
                   <div class="card">
                      <div class="card-body">
-                       <a href="day2.html">Day 2</a>
+                       <a :href="goToPage('day2')">Day 2</a>
+                     </div>
+                   </div>
+               </div>
+               <div class="col-md-2">
+                  <div class="card">
+                     <div class="card-body">
+                       <a :href="goToPage('day3')">Day 3</a>
                      </div>
                    </div>
                </div>
@@ -30,13 +37,11 @@
          var vue_det = new Vue({
             el: '#app',
             data: {
-               message: 'test message',
-               stock:0,
-               stock1:null,
-               student :{
-                   "id":1,
-                   "name":"test test",
-                   "email":"test@mailinator.com"
+               message: 'test message'                              
+            },
+            methods :{
+               goToPage : function (page){
+                  return page+".html";
                }
             }
          });

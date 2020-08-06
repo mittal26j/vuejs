@@ -14,17 +14,83 @@
                 <div class="col-md-3"><a class="btn btn-primary pull-right" href="index.html">Home</a></div>
             </div>           
             <div class="row">
-                <div class="col-md-12">
-                    stock - {{stock > 0 ? "In stock" : "Out of stock"}}
-                    <br>
-                    stock1 - {{stock1 = null ? "null" : "not null"}}
-                    <br>
-                    Object <br>
-                    ID = {{student.id}} <br>
-                    Name = {{student.name}} <br>
-                    email = {{student.email}} <br>
+                <div class="col-md-3">
+                    <label class="control-lable"> bind Link <br> [a,:href] </label>                    
                 </div>
-            </div>           
+                <div class="col-md-3">
+                    <a :href="g_link" target="_blank">Google</a>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-3">
+                    <label class="control-lable">Image binding and Hide/Show <br> [img,v-if,v-show,@click] </label>                   
+                </div>
+                <div class="col-md-3">                    
+                    <img :src="image_link" v-if="img_show">
+                </div>
+                <div class="col-md-3">
+                    <button @click="img_show = !img_show">{{ img_show? 'Hide Image' : 'Show Image' }}</button>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-3">
+                    <label class="control-lable">list <br>[v-for,v-text] </label>                   
+                </div>
+                <div class="col-md-3">
+                    <ul>
+                        <li v-for="product in products" v-text="product.name">  </li>
+                    </ul>
+                </div>
+            </div> 
+            <div class="row">
+                <div class="col-md-3">
+                    <label class="control-lable">Input <br>[v-model] </label>                   
+                </div>
+                <div class="col-md-3">
+                    <input type="text" v-model="input_text">
+                </div>
+                <div class="col-md-3">
+                    {{input_text}}
+                </div>
+            </div> 
+            <div class="row">
+                <div class="col-md-3">
+                    <label class="control-lable">Input <br>[v-text,v-html] </label>                   
+                </div>
+                <div class="col-md-3">
+                    <textarea type="text" v-model="input_text1" v-text="input_text1"></textarea>
+                </div>
+                <div class="col-md-3">
+                    {{input_text1}} <br>
+                    <span v-html="input_text1"></span>
+                </div>
+            </div> 
+            <br><br>
+            <div class="row">
+                <div class="col-md-3">
+                    <label class="control-lable"> <b>Practice Example</b> </label>                   
+                </div>
+                <div class="col-md-3" v-if="show_ch_list">
+                    <div v-for="prod in products" :key="prod.id">
+                        <input type="checkbox" :id="prod.id" v-model="prod_arr" :value="prod.name">
+                        <label :for="prod.id">{{ prod.name }}</label>
+                      </div>                    
+                                  
+                </div>
+                <div class="col-md-6" v-if="show_li_list">
+                    <ul>
+                        <li>Seleted List</li>
+                        <li v-for="prod_arr in prod_arr">{{prod_arr}}</li>
+                    </ul>                    
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-3">
+                    <button @click="show_ch_list = !show_ch_list">{{ show_ch_list ? 'Hide ch List' : 'Show ch List'}}</button>
+                    <button @click="show_li_list = !show_li_list">{{ show_li_list ? 'Hide Li List' : 'Show Li List'}}</button>                                      
+                </div>
+            </div> 
+            <br>    <br>    <br>    <br>    <br>       
          </div>   
       </div>
       <script type = "text/javascript">
@@ -32,13 +98,20 @@
             el: '#app',
             data: {
                message: 'test message',
-               stock:0,
-               stock1:null,
-               student :{
-                   "id":1,
-                   "name":"test test",
-                   "email":"test@mailinator.com"
-               }
+               g_link: "https://www.google.com/",
+               image_link:"https://dummyimage.com/200x200/000/fff" ,
+               img_show:true,
+               products : [
+                   {id:1, name:"prod 1"},
+                   {id:2, name:"prod 2"},
+                   {id:3, name:"prod 3"},
+                   {id:4, name:"prod 4"}
+               ],
+               input_text:'This is text input',
+               input_text1:"<b>This is textarea input</b>",
+               prod_arr:[],
+               show_li_list:true,
+               show_ch_list:true 
             }
          });
       </script>
