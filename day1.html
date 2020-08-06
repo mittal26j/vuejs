@@ -1,0 +1,46 @@
+<html>
+   <head>
+      <title>VueJs-Day1</title>
+      <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.1/css/bootstrap.min.css">
+      <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+   </head>
+   <body>
+      <div id = "app">
+        <h1 class="text-center">VueJs-Day1</h1>
+        
+        <div class="container">
+            <div class="row">
+                <div class="col-md-9"></div>
+                <div class="col-md-3"><a class="btn btn-primary pull-right" href="index.html">Home</a></div>
+            </div>           
+            <div class="row">
+                <div class="col-md-12">
+                    stock - {{stock > 0 ? "In stock" : "Out of stock"}}
+                    <br>
+                    stock1 - {{stock1 = null ? "null" : "not null"}}
+                    <br>
+                    Object <br>
+                    ID = {{student.id}} <br>
+                    Name = {{student.name}} <br>
+                    email = {{student.email}} <br>
+                </div>
+            </div>           
+         </div>   
+      </div>
+      <script type = "text/javascript">
+         var vue_det = new Vue({
+            el: '#app',
+            data: {
+               message: 'test message',
+               stock:0,
+               stock1:null,
+               student :{
+                   "id":1,
+                   "name":"test test",
+                   "email":"test@mailinator.com"
+               }
+            }
+         });
+      </script>
+   </body>
+</html>

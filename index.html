@@ -1,20 +1,29 @@
 <html>
    <head>
-      <title>VueJs-Day1</title>
+      <title>VueJs</title>
+      <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.1/css/bootstrap.min.css">
       <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
    </head>
    <body>
       <div id = "app">
-         <h1>VueJs-Day1</h1>
-         <div>
-            stock - {{stock > 0 ? "In stock" : "Out of stock"}}
-            <br>
-            stock1 - {{stock1 = null ? "null" : "not null"}}
-            <br>
-            Object <br>
-            ID = {{student.id}} <br>
-            Name = {{student.name}} <br>
-            email = {{student.email}} <br>
+         <h1 class="text-center">VueJs</h1>
+         <div class="container">
+            <div class="row">
+               <div class="col-md-2">
+                  <div class="card">
+                     <div class="card-body">
+                       <a href="day1.html">Day 1</a>
+                     </div>
+                   </div>
+               </div>
+               <div class="col-md-2">
+                  <div class="card">
+                     <div class="card-body">
+                       <a href="day2.html">Day 2</a>
+                     </div>
+                   </div>
+               </div>
+            </div>            
          </div>
       </div>
       <script type = "text/javascript">
@@ -26,7 +35,7 @@
                stock1:null,
                student :{
                    "id":1,
-                   "name":"test tes",
+                   "name":"test test",
                    "email":"test@mailinator.com"
                }
             }
