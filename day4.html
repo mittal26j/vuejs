@@ -1,0 +1,130 @@
+<html>
+   <head>
+      <title>VueJs-Day4</title>
+      <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.1/css/bootstrap.min.css">
+      <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>     
+   </head>
+   <body>
+      <div id = "app">
+        <h1 class="text-center">VueJs-Day4</h1>
+        
+        <div class="container">
+            <div class="row">
+                <div class="col-md-9"></div>
+                <div class="col-md-3"><a class="btn btn-primary pull-right" href="index.html">Home</a></div>
+            </div>           
+            <div class="row">
+                <div class="col-md-3">
+                    <label class="control-lable"> computed property </label>                    
+                </div>
+                <div class="col-md-6">
+                    Message : {{message}} <br>
+                    message from computed property : {{reverseMesssage}}
+                </div>
+            </div> 
+            <br>    <br>
+            <div class="row">
+                <div class="col-md-3">
+                    <label class="control-lable"> Method </label>                    
+                </div>
+                <div class="col-md-9">
+                    Random Number Method : {{random_number()}} <br>
+                    Random Number Method : {{random_number()}} 
+                    <br><br>
+
+                    Random Number computed property : {{random_number1}} <br>
+                    Random Number computed property : {{random_number1}} <br>
+                </div>
+            </div> 
+            <br>    <br>
+            <div class="row">
+                <div class="col-md-3">
+                    <label class="control-lable"> Watch </label>                    
+                </div>
+                <div class="col-md-9">
+                    <input v-model="first_name" placeholder="First Name"> <input v-model="last_name" placeholder="Last name"> <br>
+                    <br>
+                    Full Name [computed property] : {{full_name_c}}
+                    <br>
+                    Full Name [Method] : {{full_name_m()}}
+                    <br>
+                    Full Name [Watch] : {{full_name_w}}
+                </div>
+            </div> 
+            <div class="row">
+                <div class="col-md-3">
+                    <label class="control-lable"> <b>Practice Example To-Do List </b></label>                    
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-9">
+                    <table class="table">
+                        <thead>
+                          <tr>
+                            <th scope="col">#</th>
+                            <th scope="col">Name</th>
+                            <th scope="col">Status</th>                            
+                          </tr>
+                        </thead>
+                        <tbody v-for="task in taskList">
+                        <tr>
+                                <td :style="task.isCompleted ? completed_text_css:''">{{task.id}}</td>
+                                <td :style="task.isCompleted ? completed_text_css:''">{{task.name}}</td>                                
+                                <td><button :class="task.isCompleted ? 'btn btn-success' : 'btn btn-danger'">{{!task.isCompleted ? 'Pending':'Completed'}}</button></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <br>    <br>    <br>    <br>    <br>       
+         </div>   
+      </div>
+      <script type = "text/javascript">
+         var vue_det = new Vue({
+            el: '#app',
+            data: {
+               message: 'test message',
+               first_name:'',
+               last_name:'',
+               full_name_w:'',
+               taskList:[
+                   { id:"1",name:"task1", isCompleted:false},
+                   { id:"2",name:"task2", isCompleted:false},
+                   { id:"3",name:"task3", isCompleted:true},
+                   { id:"4",name:"task4", isCompleted:false},
+                   { id:"5",name:"task5", isCompleted:false},
+                   { id:"6",name:"task6", isCompleted:true},
+               ],
+               completed_text_css :'text-decoration:line-through'
+            },
+            computed :{
+                reverseMesssage : function(){
+                    return this.message.split('').reverse().join('');
+                },
+                random_number1 : function(){
+                    return Math.random(8);
+                },
+                full_name_c : function(){
+                    return this.first_name+" "+this.last_name;
+                }
+            },
+            methods :{
+                random_number : function(){
+                    return Math.random(8);
+                },
+                full_name_m : function(){
+                    return this.first_name+" "+this.last_name;
+                }                
+            },
+            watch:{
+                first_name:function(val){
+                    this.full_name_w = val +" "+this.last_Name;
+                },
+                last_name:function(val){
+                    this.full_name_w = this.first_name +" "+ val ;
+                }
+            }
+         });
+      </script>
+   </body>
+</html>
