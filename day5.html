@@ -1,0 +1,66 @@
+<html>
+   <head>
+      <title>VueJs-Day4</title>
+      <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.1/css/bootstrap.min.css">
+      <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>     
+   </head>
+   <body>
+      <div id = "app">
+        <h1 class="text-center">VueJs-Day4</h1>
+        
+        <div class="container">
+            <div class="row">
+                <div class="col-md-9"></div>
+                <div class="col-md-3"><a class="btn btn-primary pull-right" href="index.html">Home</a></div>
+            </div> 
+            
+            <div class="card">
+                <div class="card-header">
+                    <label class="control-lable"> Event Modificaion </label>  
+                </div>
+                <div class="card-body">
+                    <p @mousemove="updatecordinate" style="border: 1px solid black; text-align: center;">
+                        Cordinate : <br> 
+                        X : {{x}} <br>
+                        Y : {{y}}
+                        <br>
+                        <span @mousemove="deadspot" style="border: 1px solid red;"> deadspot - using method</span>
+                        <span @mousemove.stop="" style="border: 1px solid red;"> deadspot - using stop keyword</span>
+                    </p>
+                </div>
+            </div> 
+            <div class="row">
+                <div class="col-md-12">
+                    <form @submit.prevent="handleSubmit">
+                        <button type="submit">submit</button>
+                    </form>
+                </div>
+            </div>                     
+            
+            <br>    <br>    <br>    <br>    <br>       
+         </div>   
+      </div>
+      <script type = "text/javascript">
+         var vue_det = new Vue({
+            el: '#app',
+            data: {
+               message: 'test message', 
+               x:0,
+               y:0              
+            },            
+            methods :{
+                updatecordinate:function(event){
+                    this.x = event.clientX;
+                    this.y = event.clientY
+                },
+                deadspot:function(event){
+                    event.stopPropagation();
+                },
+                handleSubmit:function(event){
+                    console.log("Form is submitted");
+                }
+            }           
+         });
+      </script>
+   </body>
+</html>
